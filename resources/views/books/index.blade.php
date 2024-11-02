@@ -21,7 +21,13 @@
                         <td>{{ $book->title }}</td>
                         <td>{{ $book->author->name }}</td>
                         <td>{{ $book->category->name }}</td>
-                        <td>{{ $book->stock->quantity }}</td>
+                        <td>
+                            @if ($book->stock)
+                                {{ $book->stock->quantity }}
+                            @else
+                                Stok bilgisi yok
+                            @endif
+                        </td>
                         <td>
                             <a href="{{ route('books.edit', $book->id) }}" class="btn btn-warning btn-sm">Düzenle</a>
                             <form action="{{ route('books.destroy', $book->id) }}" method="POST" class="d-inline-block">
